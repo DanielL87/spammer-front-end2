@@ -22,6 +22,9 @@ export async function GET(request, response) {
       where: {
         postId,
       },
+      orderBy: {
+        CreatedAt: "desc",
+      },
     });
 
     return NextResponse.json({ success: true, comments });

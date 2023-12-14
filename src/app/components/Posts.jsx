@@ -4,6 +4,13 @@ import Post from "./Post.jsx";
 export default async function Posts() {
   const posts = await prisma.post.findMany();
 
+  //sort with prisma query
+  // const posts = await prisma.post.findMany({
+  //   orderBy: {
+  //     CreatedAt: 'desc', // 'desc' for descending order, 'asc' for ascending order
+  //   },
+  // });
+
   return (
     <div id="posts-container">
       {posts
