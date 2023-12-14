@@ -16,6 +16,7 @@ export async function POST(request, response) {
         message: "No post found using that ID",
       });
     }
+
     const post = await prisma.post.update({
       where: {
         id: postId,

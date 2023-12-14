@@ -13,7 +13,7 @@ datasource db {
 
 model Post {
   id        String    @id @default(uuid())
-  text      String
+  text      String    @unique
   likes     Int       @default(0)
   CreatedAt DateTime  @default(now())
   comments  Comment[]

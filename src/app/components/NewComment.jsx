@@ -19,7 +19,6 @@ export default function NewComment({ setIsCommenting, post, fetchComments }) {
       }),
     });
     setIsCommenting(false);
-    console.log("Refreshing the page");
     fetchComments();
     router.refresh();
   }
