@@ -1,7 +1,6 @@
 "use client";
 import { useState } from "react";
 import { useRouter } from "next/navigation.js";
-import { API } from "../lib/api.js";
 
 export default function EditPost({ post, setIsEditing }) {
   const [text, setText] = useState(post.text);
@@ -11,7 +10,7 @@ export default function EditPost({ post, setIsEditing }) {
   async function handleEdit(e) {
     e.preventDefault();
 
-    const response = await fetch(`${API}/api/posts/${post.id}`, {
+    const response = await fetch(`/api/posts/${post.id}`, {
       method: "PUT",
       headers: {
         "Content-Type": "application/json",

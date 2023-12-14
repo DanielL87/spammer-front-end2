@@ -16,6 +16,7 @@
 }
 
 .post-buttons-containers {
+  margin-top: 10px;
   display: flex;
   gap: 10px;
 }
@@ -27,4 +28,8 @@
 
 #new-post-form {
   margin-bottom: 20px;
+}
+
+.comment-container {
+  margin-top: 10px;
 }

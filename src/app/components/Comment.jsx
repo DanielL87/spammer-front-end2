@@ -1,6 +1,6 @@
 export default function Comment({ comment }) {
   return (
-    <div>
+    <div className="comment-container">
       {comment.text}
       <hr />
     </div>

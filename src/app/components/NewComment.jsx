@@ -1,15 +1,19 @@
 "use client";
 import { useState } from "react";
-import { API } from "../lib/api.js";
 import { useRouter } from "next/navigation.js";
 
-export default function NewComment({ setIsCommenting, post, fetchComments }) {
+export default function NewComment({
+  setIsCommenting,
+  post,
+  fetchComments,
+  setComments,
+}) {
   const [text, setText] = useState("");
   const router = useRouter();
 
   async function handleformSubmit(e) {
     e.preventDefault();
-    const res = await fetch(`${API}/api/posts/${post.id}/comments`, {
+    const res = await fetch(`/api/posts/${post.id}/comments`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",

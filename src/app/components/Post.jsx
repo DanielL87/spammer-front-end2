@@ -4,7 +4,7 @@ import DeletePost from "./DeletePost.jsx";
 import LikePost from "./LikePost.jsx";
 import EditPost from "./EditPost.jsx";
 import Comment from "./Comment.jsx";
-import { API } from "../lib/api.js";
+
 import NewComment from "./NewComment.jsx";
 
 export default function Post({ post }) {
@@ -13,7 +13,7 @@ export default function Post({ post }) {
   const [comments, setComments] = useState([]);
 
   async function fetchComments() {
-    const res = await fetch(`${API}/api/posts/${post.id}/comments`);
+    const res = await fetch(`/api/posts/${post.id}/comments`);
     const info = await res.json();
     setComments(info.comments);
   }
@@ -30,8 +30,16 @@ export default function Post({ post }) {
         <div>{post.text}</div>
       )}
       <div className="post-buttons-containers">
-        <LikePost post={post} />
-        <DeletePost post={post} fetchComments={fetchComments} />
+        <LikePost
+          post={post}
+          fetchComments={fetchComments}
+          setComments={setComments}
+        />
+        <DeletePost
+          post={post}
+          fetchComments={fetchComments}
+          setComments={setComments}
+        />
         <div
           type="div"
           onClick={(e) => {
@@ -55,11 +63,20 @@ export default function Post({ post }) {
             setIsCommenting={setIsCommenting}
             post={post}
             fetchComments={fetchComments}
+            setComments={setComments}
           />
         )}
-        {comments.map(
-          (comment) =>
-            comment.text && <Comment key={comment.id} comment={comment} />
+
+        {comments.length > 0 ? (
+          <div>
+            <h5>Comments:</h5>
+            {comments.map(
+              (comment) =>
+                comment.text && <Comment key={comment.id} comment={comment} />
+            )}
+          </div>
+        ) : (
+          <h5>Be the first to comment!</h5>
         )}
       </div>
     </div>
