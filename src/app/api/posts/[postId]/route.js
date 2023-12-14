@@ -60,7 +60,6 @@ export async function DELETE(request, response) {
         id: postId,
       },
     });
-    console.log(post);
 
     return NextResponse.json({ success: true, post });
   } catch (error) {
