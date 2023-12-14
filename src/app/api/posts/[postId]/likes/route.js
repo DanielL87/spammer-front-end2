@@ -4,7 +4,8 @@ import { prisma } from "@/app/lib/prisma.js";
 export async function POST(request, response) {
   try {
     const { postId } = response.params;
-    const foundPost = await prisma.findFirst({
+
+    const foundPost = await prisma.post.findFirst({
       where: {
         id: postId,
       },
