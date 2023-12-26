@@ -15,7 +15,10 @@ export default function Post({ post }) {
   async function fetchComments() {
     const res = await fetch(`/api/posts/${post.id}/comments`);
     const info = await res.json();
-    setComments(info.comments);
+
+    const newComments = info.comments || [];
+
+    setComments(newComments);
   }
 
   useEffect(() => {
